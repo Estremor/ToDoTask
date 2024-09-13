@@ -1,11 +1,25 @@
-﻿namespace ToDoTask.Lambda.RequestModel
+﻿using ToDoTask.Lambda.Entity;
+
+namespace ToDoTask.Lambda.RequestModel
 {
     public class TaskRequest
     {
-        public string TaskId { get; set; }
-        public string TaskName { get; set; }
-        public string TaskDescription { get; set; }
-        public bool IsDone { get; set; }
-        public DateTime EndDate { get; set; }
+        public string taskId { get; set; }
+        public string taskName { get; set; }
+        public string taskDescription { get; set; }
+        public bool isDone { get; set; }
+        public DateTime endDate { get; set; }
+
+        public TaskEntity ToEntity()
+        {
+            return new TaskEntity
+            {
+                Id = Guid.NewGuid().ToString(),
+                TaskName = taskName,
+                IsDone = isDone,
+                TaskDescription = taskDescription,
+                EndDate = endDate,
+            };
+        }
     }
 }
