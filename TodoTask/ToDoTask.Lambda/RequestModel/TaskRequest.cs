@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ToDoTask.Lambda.RequestModel
+﻿namespace ToDoTask.Lambda.RequestModel
 {
-    internal class TaskRequest
+    public class TaskRequest
     {
+        public string TaskId { get; set; }
+        public string TaskName { get; set; }
+        public string TaskDescription { get; set; }
+        public bool IsDone { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

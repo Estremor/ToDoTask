@@ -1,8 +1,11 @@
 ﻿namespace ToDoTask.Lambda.Entity
 {
-    public class TaskEntity
+    public class EntitBase
     {
-        public string TaskId { get; set; }
+        public string Id { get; set; }
+    }
+    public class TaskEntity : EntitBase
+    {
         public string TaskName { get; set; }
         public string TaskDescription { get; set; }
         public bool IsDone { get; set; }
