@@ -1,7 +1,11 @@
+using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
+using Amazon.Runtime.Internal;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json;
 using ToDoTask.Lambda.Entity;
 using ToDoTask.Lambda.Repository;
+using ToDoTask.Lambda.RequestModel;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -30,8 +34,15 @@ public class Function
     /// <param name="input">The event for the Lambda function handler to process.</param>
     /// <param name="context">The ILambdaContext that provides methods for logging and describing the Lambda environment.</param>
     /// <returns></returns>
-    public string CreateFunctioHandler(string input, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> CreateFunctioHandler(TaskRequest request, ILambdaContext context)
     {
-        return input.ToUpper();
+        var task = request?.ToEntity();
+        await _repository.InsertAsync(task);
+        return new APIGatewayProxyResponse
+        {
+            StatusCode = 201,
+            Body = JsonSerializer.Serialize(new { id = task.Id, task.TaskName }),
+            Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+        };
     }
 }

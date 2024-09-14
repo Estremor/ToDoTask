@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AwsSrc", "AwsSrc", "{8AA63F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToDoTask.Lambda", "ToDoTask.Lambda\ToDoTask.Lambda.csproj", "{90830ACD-2F2E-4C0C-BF2C-2DC4F6889DBF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientSrc", "ClientSrc", "{20B8E554-B550-4A58-B267-E7F7CAD6ECC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
