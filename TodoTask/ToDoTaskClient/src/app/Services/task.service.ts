@@ -24,7 +24,7 @@ export class TaskService {
   }
 
   delete(id: string) {
-    return this.http.delete(`${this.uri}/${id}`);
+    return this.http.delete<TaskModel>(`${this.uri}/${id}`);
   }
 }
 
