@@ -4,9 +4,9 @@ namespace ToDoTask.Lambda.RequestModel
 {
     public class TaskRequest
     {
-        public string taskId { get; set; }
-        public string taskName { get; set; }
-        public string taskDescription { get; set; }
+        public string id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
         public bool isDone { get; set; }
         public DateTime endDate { get; set; }
 
@@ -15,9 +15,9 @@ namespace ToDoTask.Lambda.RequestModel
             return new TaskEntity
             {
                 Id = Guid.NewGuid().ToString(),
-                TaskName = taskName,
+                TaskName = name,
                 IsDone = isDone,
-                TaskDescription = taskDescription,
+                TaskDescription = description,
                 EndDate = endDate,
             };
         }

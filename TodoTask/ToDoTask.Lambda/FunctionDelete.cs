@@ -24,9 +24,17 @@ public class FunctionDelete
 
     #endregion
 
-    public async Task<APIGatewayProxyResponse> DeleteTaskHandler(string taskId, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> DeleteTaskHandler(APIGatewayProxyRequest request, ILambdaContext context)
     {
-
+        var taskId = request.QueryStringParameters["id"];
+        if (string.IsNullOrWhiteSpace(taskId))
+        {
+            return new APIGatewayProxyResponse
+            {
+                StatusCode = 404,
+                Body = "Task not found"
+            };
+        }
         await _repository.DeleteAsync(new TaskEntity { Id = taskId });
 
         return new APIGatewayProxyResponse

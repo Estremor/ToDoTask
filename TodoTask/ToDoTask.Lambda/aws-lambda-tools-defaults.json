@@ -13,14 +13,15 @@
     "function-runtime"      : "dotnet8",
     "function-memory-size"  : 512,
     "function-timeout"      : 30,
-    "function-handler"      : "ToDoTask.Lambda::ToDoTask.Lambda.Function::CreateFunctioHandler",
+    "function-handler"      : "ToDoTask.Lambda::ToDoTask.Lambda.FunctionDelete::DeleteTaskHandler",
     "framework"             : "net8.0",
-    "function-name"         : "Create_TodoTask",
+    "function-name"         : "Delete_TodoTask",
     "package-type"          : "Zip",
-    "function-role"         : "arn:aws:iam::557690597973:role/lambda_exec_Create_TodoTask",
+    "function-role"         : "arn:aws:iam::557690597973:role/TodoTaskRoleAmerica",
     "function-subnets"      : "",
     "function-security-groups" : "",
     "tracing-mode"             : "PassThrough",
     "environment-variables"    : "",
-    "image-tag"                : ""
+    "image-tag"                : "",
+    "function-description"     : ""
 }

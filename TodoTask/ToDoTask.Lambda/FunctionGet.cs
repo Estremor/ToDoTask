@@ -24,9 +24,21 @@ public class FunctionGet
     }
     #endregion
 
-    public async Task<APIGatewayProxyResponse> GetTaskHandler(string Id, ILambdaContext context)
+    public async Task<APIGatewayProxyResponse> GetTaskHandler(APIGatewayProxyRequest request, ILambdaContext context)
     {
-        var task = await _repository.GetById(Id);
+        var id = request.QueryStringParameters?["Id"];
+        if (string.IsNullOrWhiteSpace(id))
+        {
+            var taskListResult = await _repository.ListAsync();
+            return new APIGatewayProxyResponse
+            {
+                StatusCode = 200,
+                Body = JsonSerializer.Serialize(taskListResult),
+                Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+            };
+        }
+
+        var task = await _repository.GetById(id);
         if (task == null)
         {
             return new APIGatewayProxyResponse
