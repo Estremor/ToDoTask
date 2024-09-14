@@ -1,6 +1,5 @@
 using Amazon.Lambda.APIGatewayEvents;
 using Amazon.Lambda.Core;
-using Amazon.Runtime.Internal;
 using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json;
 using ToDoTask.Lambda.Entity;
