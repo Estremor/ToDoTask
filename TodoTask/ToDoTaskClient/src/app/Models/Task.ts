@@ -1,7 +1,7 @@
 export interface TaskModel {
-  taskId: string;
-  taskName: string;
-  taskDescription: string;
+  id: string;
+  name: string;
+  description: string;
   isDone: boolean;
   endDate: string;
 }

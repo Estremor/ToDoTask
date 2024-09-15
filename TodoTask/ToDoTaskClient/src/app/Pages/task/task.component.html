@@ -1,1 +1,52 @@
-<p>task works!</p>
+<div
+  class="mat-elevation-z2"
+  style="
+    width: 30%;
+    padding: 30px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+  "
+>
+  <form [formGroup]="formTask">
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Task Name</mat-label>
+        <input matinput formControlName="name" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Task description</mat-label>
+        <input matinput formControlName="description" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Task is Done</mat-label>
+        <input matinput formControlName="isDone" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <mat-form-field>
+        <mat-label>Task endDate</mat-label>
+        <input matinput formControlName="endDate" />
+      </mat-form-field>
+    </div>
+
+    <div class="flex">
+      <button maat-flat-button color="primary" (click)="save()">Save</button>
+      <button
+        maat-flat-button
+        color="warn"
+        (click)="back()"
+        style="margin-left: 8px"
+      >
+        come back
+      </button>
+    </div>
+  </form>
+</div>

@@ -13,8 +13,9 @@ export class TaskService {
   constructor() {}
 
   list() {
-    return this.http.get<TaskModel[]>(this.uri);
+    return this.http.get<TaskModel[]>(`${this.uri}/Get_TodoTask`);
   }
+
   get(id: string) {
     return this.http.get<TaskModel>(`${this.uri}/${id}`);
   }

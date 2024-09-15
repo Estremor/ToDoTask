@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   templateUrl: './init.component.html',
   styleUrl: './init.component.css',
   imports: [MatCardModule, MatTableModule, MatIconModule, MatButtonModule],
+  standalone: true,
 })
 export class InitComponent {
   private taskService = inject(TaskService);
@@ -26,6 +27,7 @@ export class InitComponent {
   getTask() {
     this.taskService.list().subscribe({
       next: (data) => {
+        console.log(data);
         if (data.length > 0) {
           this.listTask = data;
         }
@@ -36,19 +38,21 @@ export class InitComponent {
     });
   }
 
-  constructor(private route: Router) {}
+  constructor(private route: Router) {
+    this.getTask();
+  }
 
-  Create() {
+  create() {
     this.route.navigate(['/tastk', 0]);
   }
 
   detail(model: TaskModel) {
-    this.route.navigate(['/tastk', model.taskId]);
+    this.route.navigate(['/tastk', model.id]);
   }
 
   delete(model: TaskModel) {
-    if (confirm('Do you want to delete the record? ' + model.taskName)) {
-      this.taskService.delete(model.taskId).subscribe({
+    if (confirm('Do you want to delete the record? ' + model.name)) {
+      this.taskService.delete(model.id).subscribe({
         next: (data) => {
           if (data.isDone) {
             this.getTask();
