@@ -5,3 +5,8 @@ export interface TaskModel {
   isDone: boolean;
   endDate: string;
 }
+
+export interface ResponseModel {
+  statusCode: number;
+  body: string;
+}

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json;
 using ToDoTask.Lambda.Entity;
 using ToDoTask.Lambda.Repository;
+using ToDoTask.Lambda.RequestModel;
 
 namespace ToDoTask.Lambda;
 
@@ -30,11 +31,13 @@ public class FunctionGet
         if (string.IsNullOrWhiteSpace(id))
         {
             var taskListResult = await _repository.ListAsync();
+
             return new APIGatewayProxyResponse
             {
                 StatusCode = 200,
-                Body = JsonSerializer.Serialize(taskListResult),
-                Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+                Body = JsonSerializer.Serialize(TaskResponse
+                .GetResponse(taskListResult)),
+                Headers = Options.GetHeaders()
             };
         }
 
@@ -44,15 +47,16 @@ public class FunctionGet
             return new APIGatewayProxyResponse
             {
                 StatusCode = 404,
-                Body = "Task not found"
+                Body = "Task not found",
+                Headers = Options.GetHeaders()
             };
         }
-
+        var response = TaskResponse.GetResponse(task);
         return new APIGatewayProxyResponse
         {
             StatusCode = 200,
-            Body = JsonSerializer.Serialize(task),
-            Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+            Body = JsonSerializer.Serialize(response),
+            Headers = Options.GetHeaders()
         };
     }
 }

@@ -32,14 +32,16 @@ public class FunctionDelete
             return new APIGatewayProxyResponse
             {
                 StatusCode = 404,
-                Body = "Task not found"
+                Body = "Task not found",
+                Headers = Options.GetHeaders()
             };
         }
         await _repository.DeleteAsync(new TaskEntity { Id = taskId });
 
         return new APIGatewayProxyResponse
         {
-            StatusCode = 204
+            StatusCode = 204,
+            Headers = Options.GetHeaders()
         };
     }
 }

@@ -30,7 +30,8 @@ namespace ToDoTask.Lambda
                 return new APIGatewayProxyResponse
                 {
                     StatusCode = 404,
-                    Body = "Task not found"
+                    Body = "Task not found",
+                    Headers = Options.GetHeaders()
                 };
             }
 
@@ -38,7 +39,7 @@ namespace ToDoTask.Lambda
             {
                 StatusCode = 200,
                 Body = JsonSerializer.Serialize(task),
-                Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+                Headers = Options.GetHeaders()
             };
         }
     }

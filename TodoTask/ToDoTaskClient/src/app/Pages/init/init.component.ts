@@ -18,18 +18,21 @@ export class InitComponent {
   private taskService = inject(TaskService);
   public listTask: TaskModel[] = [];
   public displayColumns: string[] = [
-    'TaskName',
-    'Description',
-    'IsDone',
-    'CreationDate',
+    'name',
+    'description',
+    'isDone',
+    'endDate',
+    'action',
   ];
 
   getTask() {
     this.taskService.list().subscribe({
       next: (data) => {
         console.log(data);
-        if (data.length > 0) {
-          this.listTask = data;
+        if (data.statusCode == 200) {
+          const responsestr: any = JSON.parse(data.body);
+          this.listTask = responsestr as TaskModel[];
+          console.log(this.listTask);
         }
       },
       error: (err) => {
@@ -43,18 +46,18 @@ export class InitComponent {
   }
 
   create() {
-    this.route.navigate(['/tastk', 0]);
+    this.route.navigate(['/task', 0]);
   }
 
   detail(model: TaskModel) {
-    this.route.navigate(['/tastk', model.id]);
+    this.route.navigate(['/task', model.id]);
   }
 
   delete(model: TaskModel) {
     if (confirm('Do you want to delete the record? ' + model.name)) {
       this.taskService.delete(model.id).subscribe({
         next: (data) => {
-          if (data.isDone) {
+          if (data.statusCode == 200) {
             this.getTask();
           } else {
             alert('the record cannot be delete');

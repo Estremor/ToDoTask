@@ -30,14 +30,14 @@ namespace ToDoTask.Lambda.Repository
             await _dynamoDBContext.DeleteAsync(entity.Id);
         }
 
-        public async Task<ICollection<TEntity>> GetById(string Id)
+        public async Task<TEntity> GetById(string Id)
         {
             var search = _dynamoDBContext.FromQueryAsync<TEntity>(new QueryOperationConfig
             {
                 Filter = new QueryFilter("id", QueryOperator.Equal, Id)
             });
             var searchResponse = await search.GetRemainingAsync();
-            return searchResponse;
+            return searchResponse.FirstOrDefault();
         }
 
         public async Task InsertAsync(TEntity entity)

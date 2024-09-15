@@ -8,7 +8,6 @@ using ToDoTask.Lambda.RequestModel;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
-
 namespace ToDoTask.Lambda;
 
 public class Function
@@ -41,7 +40,7 @@ public class Function
         {
             StatusCode = 201,
             Body = JsonSerializer.Serialize(new { id = task.Id, task.TaskName }),
-            Headers = new Dictionary<string, string> { { "Content-Type", "application/json" } }
+            Headers = Options.GetHeaders()
         };
     }
 }

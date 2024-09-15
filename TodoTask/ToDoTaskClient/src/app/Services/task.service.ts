@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { appsettings } from '../Settings/appsettings';
-import { TaskModel } from '../Models/Task';
+import { ResponseModel, TaskModel } from '../Models/Task';
 
 @Injectable({
   providedIn: 'root',
@@ -13,11 +13,11 @@ export class TaskService {
   constructor() {}
 
   list() {
-    return this.http.get<TaskModel[]>(`${this.uri}/Get_TodoTask`);
+    return this.http.get<ResponseModel>(`${this.uri}/todo_task`);
   }
 
   get(id: string) {
-    return this.http.get<TaskModel>(`${this.uri}/${id}`);
+    return this.http.get<ResponseModel>(`${this.uri}/todo_task?id=${id}`);
   }
 
   create(model: TaskModel) {
@@ -25,7 +25,7 @@ export class TaskService {
   }
 
   delete(id: string) {
-    return this.http.delete<TaskModel>(`${this.uri}/${id}`);
+    return this.http.delete<ResponseModel>(`${this.uri}/todo_task?id=${id}`);
   }
 }
 
