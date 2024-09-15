@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../Services/task.service';
 import { Router } from '@angular/router';
 import { TaskModel } from '../../Models/Task';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-task',
   standalone: true,
@@ -18,6 +19,7 @@ import { TaskModel } from '../../Models/Task';
     MatButtonModule,
     MatRadioModule,
     ReactiveFormsModule,
+    NgIf,
   ],
 })
 export class TaskComponent implements OnInit {
