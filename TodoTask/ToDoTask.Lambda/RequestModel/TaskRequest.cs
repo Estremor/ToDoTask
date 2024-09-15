@@ -18,7 +18,7 @@ namespace ToDoTask.Lambda.RequestModel
                 TaskName = name,
                 IsDone = isDone,
                 TaskDescription = description,
-                EndDate = endDate,
+                CreationDate = DateTime.Now,
             };
         }
     }

@@ -17,13 +17,7 @@ import { Router } from '@angular/router';
 export class InitComponent {
   private taskService = inject(TaskService);
   public listTask: TaskModel[] = [];
-  public displayColumns: string[] = [
-    'name',
-    'description',
-    'isDone',
-    'endDate',
-    'action',
-  ];
+  public displayColumns: string[] = ['name', 'description', 'isDone', 'action'];
 
   getTask() {
     this.taskService.list().subscribe({

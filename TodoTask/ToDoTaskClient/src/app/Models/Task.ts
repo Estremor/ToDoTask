@@ -3,7 +3,6 @@ export interface TaskModel {
   name: string;
   description: string;
   isDone: boolean;
-  endDate: string;
 }
 
 export interface ResponseModel {

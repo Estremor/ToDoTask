@@ -21,7 +21,7 @@ export class TaskService {
   }
 
   create(model: TaskModel) {
-    return this.http.post(this.uri, model);
+    return this.http.post(`${this.uri}/todo_task`, model);
   }
 
   delete(id: string) {

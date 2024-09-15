@@ -12,42 +12,40 @@
     <div class="flex">
       <mat-form-field>
         <mat-label>Task Name</mat-label>
-        <input matinput formControlName="name" />
+        <input matInput formControlName="name" />
       </mat-form-field>
     </div>
 
     <div class="flex">
       <mat-form-field>
         <mat-label>Task description</mat-label>
-        <input matinput formControlName="description" />
+        <input matInput formControlName="description" />
       </mat-form-field>
     </div>
 
     <div class="flex">
       <mat-form-field>
         <mat-label>Task is Done</mat-label>
-        <input matinput formControlName="isDone" />
+        <input matInput formControlName="isDone" />
       </mat-form-field>
     </div>
 
-    <div class="flex">
-      <mat-form-field>
-        <mat-label>Task endDate</mat-label>
-        <input matinput formControlName="endDate" />
-      </mat-form-field>
-    </div>
+    <mat-radio-group
+      matInput
+      formControlName="isDone"
+      form
+      aria-label="Task is done"
+    >
+      <mat-radio-button value="1">yes</mat-radio-button>
+      <mat-radio-button value="0">not</mat-radio-button>
+    </mat-radio-group>
 
     <div class="flex">
-      <button
-        NgIf="id == '0'"
-        maat-flat-button
-        color="primary"
-        (click)="save()"
-      >
+      <button NgIf="id == '0'" mat-flat-button color="primary" (click)="save()">
         Save
       </button>
       <button
-        maat-flat-button
+        mat-flat-button
         color="warn"
         (click)="back()"
         style="margin-left: 8px"

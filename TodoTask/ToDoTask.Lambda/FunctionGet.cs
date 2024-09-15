@@ -27,7 +27,7 @@ public class FunctionGet
 
     public async Task<APIGatewayProxyResponse> GetTaskHandler(APIGatewayProxyRequest request, ILambdaContext context)
     {
-        var id = request.QueryStringParameters?["Id"];
+        var id = request.QueryStringParameters?["id"];
         if (string.IsNullOrWhiteSpace(id))
         {
             var taskListResult = await _repository.ListAsync();

@@ -2,6 +2,7 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule } from '@angular/material/radio';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { TaskService } from '../../Services/task.service';
 import { Router } from '@angular/router';
@@ -15,6 +16,7 @@ import { TaskModel } from '../../Models/Task';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatRadioModule,
     ReactiveFormsModule,
   ],
 })
@@ -27,7 +29,6 @@ export class TaskComponent implements OnInit {
     name: [''],
     description: [''],
     isDone: [false],
-    endDate: [''],
   });
 
   constructor(private router: Router) {}
@@ -45,7 +46,6 @@ export class TaskComponent implements OnInit {
             name: result.name,
             description: result.description,
             isDone: result.isDone,
-            enDate: result.endDate,
           });
         }
       },
@@ -61,10 +61,9 @@ export class TaskComponent implements OnInit {
       name: this.formTask.value.name,
       description: this.formTask.value.description,
       isDone: this.formTask.value.isDone,
-      endDate: this.formTask.value.endDate,
     };
 
-    if (this.id == '' && this.id.length < 0) {
+    if (this.id == '0') {
       this.taskServices.create(mObject).subscribe({
         next: (data) => {
           console.log(data);

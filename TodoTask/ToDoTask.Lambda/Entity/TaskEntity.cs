@@ -20,7 +20,7 @@ namespace ToDoTask.Lambda.Entity
         [DynamoDBProperty("isDone")]
         public bool IsDone { get; set; }
 
-        [DynamoDBProperty("endDate")]
-        public DateTime EndDate { get; set; }
+        [DynamoDBProperty("creationDate")]
+        public DateTime CreationDate { get; set; }
     }
 }
