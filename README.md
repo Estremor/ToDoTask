@@ -53,7 +53,7 @@ El repositorio está organizado de la siguiente manera:
 
 Clona este repositorio en tu máquina local utilizando la siguiente Url:
 
-git clone https://github.com/Estremor/ToDoTask
+git clone [repositorio](https://github.com/Estremor/ToDoTask.git)
 ## Ejecutar angular
 Navegar a la carpeta angular y ejecutar: 
 cd angular-app
