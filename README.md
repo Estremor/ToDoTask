@@ -92,4 +92,4 @@ Nota las api estan en aws para ralizar las pruebas
 
 ## Diagrama de la Arquitectura
 
-![Diagrama de arquitectura](Todo task Diagram.drawio.png)
+![Diagrama de arquitectura](TodoTask/Todo%20task%20Diagram.drawio.png)
