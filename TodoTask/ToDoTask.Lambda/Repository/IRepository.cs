@@ -24,7 +24,7 @@
         /// </summary>
         /// <param name="entity">Entidad to delete</param>
         /// <returns>task</returns>
-        Task DeleteAsync(TEntity entity);
+        Task DeleteAsync<TEntity>(string id);
 
         /// <summary>
         /// list one entity that mach wiht the id in asyncronus way

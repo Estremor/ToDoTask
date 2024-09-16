@@ -7,7 +7,6 @@ namespace ToDoTask.Lambda.RequestModel
         public string id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public bool isDone { get; set; }
 
         public static List<TaskResponse> GetResponse(IEnumerable<TaskEntity> entity)
         {
@@ -18,7 +17,6 @@ namespace ToDoTask.Lambda.RequestModel
                     id = item.Id,
                     name = item.TaskName,
                     description = item.TaskDescription,
-                    isDone = item.IsDone,
                 });
             return response;
         }
@@ -30,7 +28,6 @@ namespace ToDoTask.Lambda.RequestModel
                 id = entity.Id,
                 name = entity.TaskName,
                 description = entity.TaskDescription,
-                isDone = entity.IsDone,
             };
         }
     }

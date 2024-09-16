@@ -17,16 +17,14 @@ import { Router } from '@angular/router';
 export class InitComponent {
   private taskService = inject(TaskService);
   public listTask: TaskModel[] = [];
-  public displayColumns: string[] = ['name', 'description', 'isDone', 'action'];
+  public displayColumns: string[] = ['name', 'description', 'action'];
 
   getTask() {
     this.taskService.list().subscribe({
       next: (data) => {
-        console.log(data);
         if (data.statusCode == 200) {
           const responsestr: any = JSON.parse(data.body);
           this.listTask = responsestr as TaskModel[];
-          console.log(this.listTask);
         }
       },
       error: (err) => {
@@ -51,7 +49,7 @@ export class InitComponent {
     if (confirm('Do you want to delete the record? ' + model.name)) {
       this.taskService.delete(model.id).subscribe({
         next: (data) => {
-          if (data.statusCode == 200) {
+          if (data.ok == 'Ok') {
             this.getTask();
           } else {
             alert('the record cannot be delete');

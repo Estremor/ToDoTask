@@ -25,9 +25,9 @@ namespace ToDoTask.Lambda.Repository
 
         #region Methods
 
-        public async Task DeleteAsync(TEntity entity)
+        public async Task DeleteAsync<TEntity>(string id)
         {
-            await _dynamoDBContext.DeleteAsync(entity.Id);
+            await _dynamoDBContext.DeleteAsync<TEntity>(id);
         }
 
         public async Task<TEntity> GetById(string Id)

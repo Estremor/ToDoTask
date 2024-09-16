@@ -30,7 +30,6 @@ export class TaskComponent implements OnInit {
   public formTask: FormGroup = this.formBuild.group({
     name: [''],
     description: [''],
-    isDone: [false],
   });
 
   constructor(private router: Router) {}
@@ -43,12 +42,17 @@ export class TaskComponent implements OnInit {
           const result = (responsestr as TaskModel[]).filter(
             (x) => x.id == this.id
           )[0];
-
-          this.formTask.patchValue({
-            name: result.name,
-            description: result.description,
-            isDone: result.isDone,
-          });
+          if (this.id == '0') {
+            this.formTask.patchValue({
+              name: '',
+              description: '',
+            });
+          } else {
+            this.formTask.patchValue({
+              name: result.name,
+              description: result.description,
+            });
+          }
         }
       },
       error: (err) => {
@@ -62,13 +66,11 @@ export class TaskComponent implements OnInit {
       id: this.formTask.value.id,
       name: this.formTask.value.name,
       description: this.formTask.value.description,
-      isDone: this.formTask.value.isDone,
     };
 
     if (this.id == '0') {
       this.taskServices.create(mObject).subscribe({
         next: (data) => {
-          console.log(data);
           this.router.navigate(['/']);
         },
         error: (err) => {

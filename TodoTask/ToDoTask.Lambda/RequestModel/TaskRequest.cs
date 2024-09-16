@@ -7,7 +7,6 @@ namespace ToDoTask.Lambda.RequestModel
         public string id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public bool isDone { get; set; }
         public DateTime endDate { get; set; }
 
         public TaskEntity ToEntity()
@@ -16,7 +15,6 @@ namespace ToDoTask.Lambda.RequestModel
             {
                 Id = Guid.NewGuid().ToString(),
                 TaskName = name,
-                IsDone = isDone,
                 TaskDescription = description,
                 CreationDate = DateTime.Now,
             };

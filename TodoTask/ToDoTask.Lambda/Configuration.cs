@@ -10,9 +10,9 @@ namespace ToDoTask.Lambda
         {
             return new Dictionary<string, string> {
                 { "Content-Type", "application/json" },
-                { "Access-Control-Allow-Origin","*"},
-                { "Access-Control-Allow-Headers","*"},
-                { "Access-Control-Allow-Methods","POST,GET,DELETE"}
+                { "Access-Control-Allow-Origin","http://localhost:4200"},
+                { "Access-Control-Allow-Headers","Content-Type"},
+                { "Access-Control-Allow-Methods","GET, POST, DELETE, OPTIONS"}
             };
         }
     }

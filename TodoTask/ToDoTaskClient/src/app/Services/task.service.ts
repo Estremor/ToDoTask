@@ -25,8 +25,6 @@ export class TaskService {
   }
 
   delete(id: string) {
-    return this.http.delete<ResponseModel>(`${this.uri}/todo_task?id=${id}`);
+    return this.http.delete<any>(`${this.uri}/todo_task/${id}`);
   }
 }
-
-// add the corects urls and create its in appsettings models

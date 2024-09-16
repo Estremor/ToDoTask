@@ -4,7 +4,8 @@ namespace ToDoTask.Lambda.Entity
 {
     public class EntitBase
     {
-        [DynamoDBHashKey("id")]
+        [DynamoDBHashKey]
+        [DynamoDBProperty("id")]
         public string Id { get; set; }
     }
 
@@ -16,9 +17,6 @@ namespace ToDoTask.Lambda.Entity
 
         [DynamoDBProperty("taskDescription")]
         public string TaskDescription { get; set; }
-
-        [DynamoDBProperty("isDone")]
-        public bool IsDone { get; set; }
 
         [DynamoDBProperty("creationDate")]
         public DateTime CreationDate { get; set; }
